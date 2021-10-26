@@ -1,4 +1,4 @@
-const siteURL = "https://www.kernowhealthcic.org.uk"
+const siteURL = "https://public-api.wordpress.com"
 
 export const state = () => ({
   posts: [],
@@ -20,7 +20,7 @@ export const actions = {
 
     try {
       let posts = await fetch(
-        `${siteURL}/wp-json/wp/v2/posts?page=1&per_page=20&_embed=1`
+        `${siteURL}/rest/v1.1/sites/headlesspoc.wordpress.com/posts?page=1&per_page=20&_embed=1`
       ).then(res => res.json())
 
       posts = posts
@@ -50,7 +50,7 @@ export const actions = {
 
     try {
       let tags = await fetch(
-        `${siteURL}/wp-json/wp/v2/tags?page=1&per_page=40&include=${allTags}`
+        `${siteURL}/rest/v1.1/sites/headlesspoc.wordpress.com/tags?page=1&per_page=40&include=${allTags}`
       ).then(res => res.json())
 
       tags = tags.map(({ id, name }) => ({
