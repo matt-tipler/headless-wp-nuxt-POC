@@ -23,7 +23,7 @@ export const actions = {
         `${siteURL}/rest/v1.1/sites/headlesspoc.wordpress.com/posts?page=1&per_page=20&_embed=1`
       ).then(res => res.json())
 
-      posts = found
+      posts = found.posts
         .filter(el => el.status === "publish")
         .map(({ id, slug, title, excerpt, date, tags, content }) => ({
           id,
