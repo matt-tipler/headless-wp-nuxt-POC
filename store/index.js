@@ -20,7 +20,7 @@ export const actions = {
 
     try {
       let posts = await fetch(
-        `${siteURL}/rest/v1.1/sites/headlesspoc.wordpress.com/posts?page=1&per_page=20&_embed=1`
+        `${siteURL}/rest/v1.1/sites/headlesspoc.wordpress.com/posts`
       ).then(res => res.json())
 
       posts = posts
@@ -37,6 +37,7 @@ export const actions = {
 
       commit("updatePosts", posts)
     } catch (err) {
+      console.log('here')
       console.log(err)
     }
   },
