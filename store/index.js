@@ -1,4 +1,5 @@
 const siteURL = "https://public-api.wordpress.com"
+Vue.config.devtools = true
 
 export const state = () => ({
   posts: [],
