@@ -1,4 +1,4 @@
-const siteURL = "https://public-api.wordpress.com"
+const siteURL = "http://tango-headless-wp.atwebpages.com"
 
 export const state = () => ({
   posts: [],
@@ -20,7 +20,7 @@ export const actions = {
 
     try {
       let posts = await fetch(
-        `${siteURL}/rest/v1.1/sites/headlesspoc.wordpress.com/posts`
+        `${siteURL}/wp-json/wp/v2/posts?page=1&per_page=20&_embed=1`
       ).then(res => res.json())
 
       posts = posts
@@ -37,7 +37,6 @@ export const actions = {
 
       commit("updatePosts", posts)
     } catch (err) {
-      console.log('here')
       console.log(err)
     }
   },
@@ -51,7 +50,7 @@ export const actions = {
 
     try {
       let tags = await fetch(
-        `${siteURL}/rest/v1.1/sites/headlesspoc.wordpress.com/tags?page=1&per_page=40&include=${allTags}`
+        `${siteURL}/wp-json/wp/v2/tags?page=1&per_page=40&include=${allTags}`
       ).then(res => res.json())
 
       tags = tags.map(({ id, name }) => ({
